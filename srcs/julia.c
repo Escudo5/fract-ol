@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:00:18 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 17:36:08 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:47:30 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void draw_julia(t_data *data)
             color = color_select(data);
             *(unsigned int *)(data->addr + (y * data->line_len + x * (data->bpp / 8))) = color;
             //printf("Dibujando Julia... Iteración: %d\n", data->iter);
+            printf("x: %d, y: %d, color: %x\n", x, y, color);
             x++;
         }
         y++;

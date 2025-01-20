@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:00:18 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 17:02:32 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:36:08 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ static int math_julia(double c_re, double c_img, int max_iter, t_data *data)
 
 void draw_julia(t_data *data)
 {
-   int x;
-   int y;
-   double c_re;
-   double c_img;
-   int color;
+    int x;
+    int y;
+    double c_re;
+    double c_img;
+    int color;
+    c_re = data->c_re;
+    c_img = data->c_img;
     
     y = 0;
     while (y < data->win_height)
@@ -48,14 +50,15 @@ void draw_julia(t_data *data)
         x = 0;
         while (x < data->win_width)
         {
-            c_re = data->x_min + (x / (double) data->win_width) * (data->x_max - data->x_min);
-            c_img = data->y_min + (y / (double) data->win_height) * (data->y_max - data->y_min);
+            data->z_re = data->x_min + (x / (double) data->win_width) * (data->x_max - data->x_min);
+            data->z_img = data->y_min + (y / (double) data->win_height) * (data->y_max - data->y_min);
+            printf("z_re: %f, z_img: %f, c_re: %f, c_img: %f\n", data->z_re, data->z_img, c_re, c_img);
             //printf("c_re: %f, c_img: %f\n", c_re, c_img);
 
             data->iter = math_julia(c_re, c_img, data->max_iter, data);
             color = color_select(data);
             *(unsigned int *)(data->addr + (y * data->line_len + x * (data->bpp / 8))) = color;
-            //printf("Dibujando Mandelbrot... Iteración: %d\n", data->iter);
+            //printf("Dibujando Julia... Iteración: %d\n", data->iter);
             x++;
         }
         y++;

@@ -1,6 +1,5 @@
 NAME = fractol
-SRC = srcs/main.c srcs/draw_mandel.c
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRCS:.c=.o)
 MLX = minilibx-linux
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX)

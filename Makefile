@@ -1,10 +1,13 @@
 NAME = fractol
-SRC = srcs/main.c
+SRC = srcs/main.c srcs/draw_mandel.c
 OBJ = $(SRC:.c=.o)
 MLX = minilibx-linux
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux
+CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX)
 LFLAGS = -L$(MLX) -lmlx -lXext -lX11 -lm
+
+
+SRCS := srcs/main.c srcs/draw_mandel.c srcs/color.c srcs/draw_background.c
 
 all: $(NAME)
 
@@ -17,8 +20,10 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
+	$(MAKE) -C $(MLX) clean
 	rm -f $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
+

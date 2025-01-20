@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:00:18 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 17:47:30 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:35:50 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int math_julia(double c_re, double c_img, int max_iter, t_data *data)
         data->z_img = 2.0 * data->z_re * data->z_img + c_img;
         data->z_re = temp;
         //printf("Temp: %f\n", temp);
-        //printf("Iter: %d, z_re: %f, z_img: %f\n", iter, data->z_re, data->z_img);
+        printf(" holaaaaaaaaaaaaaaa Iter: %d, z_re: %f, z_img: %f\n", iter, data->z_re, data->z_img);
         iter++;
     }
     //printf("z_re * z_re + z_img * z_img: %f\n", data->z_re * data->z_re + data->z_img * data->z_img);
@@ -58,7 +58,7 @@ void draw_julia(t_data *data)
             data->iter = math_julia(c_re, c_img, data->max_iter, data);
             color = color_select(data);
             *(unsigned int *)(data->addr + (y * data->line_len + x * (data->bpp / 8))) = color;
-            //printf("Dibujando Julia... Iteración: %d\n", data->iter);
+            printf("Dibujando Julia... Iteración: %d\n", data->iter);
             printf("x: %d, y: %d, color: %x\n", x, y, color);
             x++;
         }

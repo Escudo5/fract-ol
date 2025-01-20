@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:51:25 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 17:50:49 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:36:53 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int main(void)
     data.y_min = -1.5;
     data.y_max = 1.5;
     data.max_iter = 100;
-    data.win_width = 800;
+    data.win_width = 600;
     data.win_height = 600;
 
     //consts de julia
-    data.c_re = -0.7;
-    data.c_img = 0.27015;
+    data.c_re = -1.476;
+    data.c_img = 0;
 
     // Dibujar un píxel en el buffer
     /*
@@ -43,7 +43,7 @@ int main(void)
     
     draw_background(&data);
     mlx_loop(data.mlx);*/
-    draw_julia(&data);
+    draw_mandelbrot(&data);
     mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0); // Mostrar la imagen en la ventana
     mlx_loop (data.mlx);
 

@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:00:01 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 17:16:54 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:37:14 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int math_mandelbrot(double c_re, double c_img, int max_iter, t_data *data
         data->z_img = 2.0 * data->z_re * data->z_img + c_img;
         data->z_re = temp;
         //printf("Temp: %f\n", temp);
-        //printf("Iter: %d, z_re: %f, z_img: %f\n", iter, data->z_re, data->z_img);
+        //printf(" holaaaaaaaaaaaa Iter: %d, z_re: %f, z_img: %f\n", iter, data->z_re, data->z_img);
         iter++;
     }
     //printf("z_re * z_re + z_img * z_img: %f\n", data->z_re * data->z_re + data->z_img * data->z_img);

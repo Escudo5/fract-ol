@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:47:18 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 15:43:53 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:53:04 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 int color_select(t_data *data)
 {
-    int color;
-    
-    if (data->iter == data->max_iter)
-        color = 0xFFFFFF;  // Negro si no se escapa
-    else
-        color = (data->iter * 255 / data->max_iter) << 16 | (data->iter * 255 / data->max_iter) << 8; // Color gradiente en rojo
+    int r, g, b;
 
-    return color;
+    if (data->iter == data->max_iter)
+    {
+        r = 0;
+        g = 0;
+        b = 0;  // Puntos en el conjunto Mandelbrot serán negros
+    }
+    else
+    {
+        r = (data->iter * 10) % 255;  // Gradiente de rojo
+        g = (data->iter * 5) % 255;   // Gradiente de verde
+        b = (data->iter * 20) % 255;  // Gradiente de azul
+    }
+
+    return (r << 16) | (g << 8) | b;  // Devuelve el color como un entero
 }
+

@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_mandel.c                                      :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 13:00:01 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 16:51:54 by smarquez         ###   ########.fr       */
+/*   Created: 2025/01/20 17:00:18 by smarquez          #+#    #+#             */
+/*   Updated: 2025/01/20 17:02:32 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static int math_mandelbrot(double c_re, double c_img, int max_iter, t_data *data)
+static int math_julia(double c_re, double c_img, int max_iter, t_data *data)
 {
     int iter;
     double temp;
 
-    data->z_re = 0.0;
-    data->z_img = 0.0;
     temp = 0.0;
     iter = 0;
     while (data->z_re * data->z_re + data->z_img * data->z_img <= 4.0 && iter < max_iter)
@@ -36,7 +34,7 @@ static int math_mandelbrot(double c_re, double c_img, int max_iter, t_data *data
 }
 
 
-void draw_mandelbrot(t_data *data)
+void draw_julia(t_data *data)
 {
    int x;
    int y;
@@ -54,7 +52,7 @@ void draw_mandelbrot(t_data *data)
             c_img = data->y_min + (y / (double) data->win_height) * (data->y_max - data->y_min);
             //printf("c_re: %f, c_img: %f\n", c_re, c_img);
 
-            data->iter = math_mandelbrot(c_re, c_img, data->max_iter, data);
+            data->iter = math_julia(c_re, c_img, data->max_iter, data);
             color = color_select(data);
             *(unsigned int *)(data->addr + (y * data->line_len + x * (data->bpp / 8))) = color;
             //printf("Dibujando Mandelbrot... Iteración: %d\n", data->iter);

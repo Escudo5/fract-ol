@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:51:25 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/21 13:17:40 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:23:01 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(void)
     //consts de julia
     data.c_re = -1.476;
     data.c_img = 0.0;
-    mlx_hook(data.mlx, 4, 0, mouse_zoom, &data);
+    mlx_mouse_hook(data.win, mouse_zoom, &data);
 
     draw_julia(&data);
     mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0); // Mostrar la imagen en la ventana

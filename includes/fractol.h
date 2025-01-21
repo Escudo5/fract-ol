@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:35:58 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 17:16:47 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:17:52 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void draw_mandelbrot(t_data *data);
 int color_select(t_data *data);
 void draw_background(t_data *data);
 void draw_julia(t_data *data);
+int mouse_zoom(int button, int x, int y, t_data *data);
+
 
 
 

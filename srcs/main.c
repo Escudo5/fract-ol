@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:51:25 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/21 12:49:33 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:17:40 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,8 @@ int main(void)
     //consts de julia
     data.c_re = -1.476;
     data.c_img = 0.0;
+    mlx_hook(data.mlx, 4, 0, mouse_zoom, &data);
 
-    // Dibujar un píxel en el buffer
-    /*
-    int x = 200; // Coordenada X
-    int y = 200; // Coordenada Y
-    int color = 0x00FF00; // Verde
-    *(unsigned int *)(data.addr + (y * data.line_len + x * (data.bpp / 8))) = color;
-    
-    
-    draw_background(&data);
-    mlx_loop(data.mlx);*/
     draw_julia(&data);
     mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0); // Mostrar la imagen en la ventana
     mlx_loop (data.mlx);

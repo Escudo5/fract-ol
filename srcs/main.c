@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:51:25 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 18:36:53 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:49:33 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ int main(void)
 {
     t_data data;
     data.mlx = mlx_init();
-    data.win = mlx_new_window(data.mlx, 800, 600, "Fract-ol");
-    data.img = mlx_new_image(data.mlx, 800, 600);
+    data.win_width = 800;
+    data.win_height = 600;
+    data.win = mlx_new_window(data.mlx, data.win_width, data.win_height, "Fract-ol");
+    data.img = mlx_new_image(data.mlx, data.win_width, data.win_height);
     // Obtener buffer de datos de la imagen. Sirve para sacar los colores.
     data.addr = mlx_get_data_addr(data.img, &data.bpp, &data.line_len, &data.endian);
     
@@ -26,12 +28,10 @@ int main(void)
     data.y_min = -1.5;
     data.y_max = 1.5;
     data.max_iter = 100;
-    data.win_width = 600;
-    data.win_height = 600;
 
     //consts de julia
     data.c_re = -1.476;
-    data.c_img = 0;
+    data.c_img = 0.0;
 
     // Dibujar un píxel en el buffer
     /*
@@ -43,7 +43,7 @@ int main(void)
     
     draw_background(&data);
     mlx_loop(data.mlx);*/
-    draw_mandelbrot(&data);
+    draw_julia(&data);
     mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0); // Mostrar la imagen en la ventana
     mlx_loop (data.mlx);
 

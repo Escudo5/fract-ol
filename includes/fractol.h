@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:35:58 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/21 18:29:18 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:59:53 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ typedef struct t_data
     int size_x;
     int size_y;
     int *pixels;
-    int (*draw_fractal)(struct s_data *data);
-    
+    char *fractal;
+    double  zoom_factor;
+    void (*draw_fractal)(struct t_data *);
 }t_data;
 
 void draw_background(t_data *data);
@@ -50,7 +51,13 @@ void draw_mandelbrot(t_data *data);
 int color_select(t_data *data);
 void draw_background(t_data *data);
 void draw_julia(t_data *data);
-int mouse_zoom(int button, int x, int y, t_data *data)
+void zoom_in(t_data *data, int x, int y);
+void zoom_out(t_data *data, int x, int y);
+int mouse_control(int button, int x, int y, void *param);
+
+
+
+
 
 
 

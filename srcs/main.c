@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:51:25 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/21 18:57:49 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:52:59 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main(int argc, char **argv)
     data.y_min = -1.5;
     data.y_max = 1.5;
     data.max_iter = 100;
+    data.zoom_factor = 1.0;
 
     if (strcmp(argv[1], "julia") == 0)
     {

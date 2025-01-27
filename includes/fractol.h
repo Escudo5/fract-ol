@@ -6,15 +6,18 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:35:58 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/27 11:20:14 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:52:36 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx-linux/mlx.h"
-#include "../minilibx-linux/mlx_int.h"
-
 #ifndef FRACTOL_H
 # define FRACTOL_H
+
+#include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx_int.h"
+# include "../custom-libft/libft.h"
+#include <math.h>
+
 
 typedef struct t_data
 {
@@ -48,23 +51,16 @@ typedef struct t_data
 
 void draw_background(t_data *data);
 void draw_mandelbrot(t_data *data);
+void draw_julia(t_data *data);
+void	draw_burning(t_data *data);
 int color_select(t_data *data);
 void draw_background(t_data *data);
-void draw_julia(t_data *data);
-void zoom_in(t_data *data, int x, int y);
-void zoom_out(t_data *data, int x, int y);
+//void zoom_in(t_data *data, int x, int y);
+//void zoom_out(t_data *data, int x, int y);
 int mouse_control(int button, int x, int y, void *param);
 int keys_control(int keycode, t_data *data);
-
-
-
-
-
-
-
-
-
-
+void var_init(t_data *data);
+int refresh(t_data *data);
 
 
 

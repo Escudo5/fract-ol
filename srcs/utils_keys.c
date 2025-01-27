@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:04:18 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/27 11:18:34 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:36:50 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ int arrow_control(int keycode, t_data *data)
         data->x_max -= move;
         data->x_min -= move;
     }
-    // Actualizar el fractal después de mover
-    data->draw_fractal(data);
-    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
     return (0);
 }
 

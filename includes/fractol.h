@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:35:58 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/21 18:59:53 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:20:14 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void draw_julia(t_data *data);
 void zoom_in(t_data *data, int x, int y);
 void zoom_out(t_data *data, int x, int y);
 int mouse_control(int button, int x, int y, void *param);
+int keys_control(int keycode, t_data *data);
+
 
 
 

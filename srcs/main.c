@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:51:25 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/27 10:52:59 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:19:52 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int main(int argc, char **argv)
     }
 
     mlx_mouse_hook(data.win, mouse_control, &data);
+    mlx_key_hook(data.win, keys_control, &data);
+
 
     data.draw_fractal(&data); // Llama a la función del fractal seleccionado
     mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);

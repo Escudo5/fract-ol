@@ -6,7 +6,9 @@ CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX)
 LFLAGS = -L$(MLX) -lmlx -lXext -lX11 -lm
 
 
-SRCS := srcs/main.c srcs/draw_mandel.c srcs/color.c srcs/draw_background.c srcs/julia.c srcs/utils_mouse.c
+SRCS := srcs/main.c srcs/draw_mandel.c srcs/color.c srcs/draw_background.c srcs/julia.c srcs/utils_mouse.c \
+	srcs/utils_keys.c
+
 
 all: $(NAME)
 

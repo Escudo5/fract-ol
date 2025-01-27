@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:41:05 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/27 17:30:18 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:41:44 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	refresh(t_data *data)
 		draw_mandelbrot(data);
 	if (ft_strncmp(data->fractal, "Julia", 5) == 0)
 		draw_julia(data);
-        mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }

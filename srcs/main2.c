@@ -6,12 +6,11 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:50:08 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/27 17:43:49 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:48:41 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
 
 static int	fun_burning(char **argv)
 {
@@ -27,8 +26,8 @@ static int	fun_burning(char **argv)
 	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y,
 			"Burningship");
 	data.img = mlx_new_image(data.mlx, data.win_width, data.win_height);
-	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp,
-			&data.line_len, &data.endian);
+	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp, &data.line_len,
+			&data.endian);
 	mlx_hook(data.win, 17, 0, close_win, &data);
 	mlx_mouse_hook(data.win, mouse_control, &data);
 	mlx_key_hook(data.win, keys_control, &data);
@@ -36,7 +35,6 @@ static int	fun_burning(char **argv)
 	mlx_loop(data.mlx);
 	return (0);
 }
-
 
 static int	fun_julia(char **argv)
 {
@@ -51,11 +49,10 @@ static int	fun_julia(char **argv)
 	data.size_x = data.win_width;
 	data.size_y = data.win_height;
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y,
-			"julia");
+	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "julia");
 	data.img = mlx_new_image(data.mlx, data.win_width, data.win_height);
-	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp,
-			&data.line_len, &data.endian);
+	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp, &data.line_len,
+			&data.endian);
 	mlx_hook(data.win, 17, 0, close_win, &data);
 	mlx_mouse_hook(data.win, mouse_control, &data);
 	mlx_key_hook(data.win, keys_control, &data);
@@ -75,16 +72,10 @@ static int	fun_mandel(char **argv)
 	data.size_x = data.win_width;
 	data.size_y = data.win_height;
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y,
-			"Mandelbrot");
+	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "Mandelbrot");
 	data.img = mlx_new_image(data.mlx, data.win_width, data.win_height);
-	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp,
-			&data.line_len, &data.endian);
-	// if(!data.pixels)
-	// {
-	// 	printf("Error \n");
-	// 	return(1);
-	// }
+	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp, &data.line_len,
+			&data.endian);
 	mlx_hook(data.win, 17, 0, close_win, &data);
 	mlx_mouse_hook(data.win, mouse_control, &data);
 	mlx_key_hook(data.win, keys_control, &data);

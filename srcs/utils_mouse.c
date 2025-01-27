@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:18:41 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/27 10:59:19 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:42:22 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,20 @@ void zoom_out(t_data *data, int x, int y)
 
 
 
-int mouse_control(int button, int x, int y, void *param)
+int	mouse_control(int button, int x, int y, void *param)
 {
-    t_data *data;
+	t_data	*data;
 
-    data = (t_data *)param;
-    if (x < 0 || x >= data->win_width || y < 0 || y >= data->win_height)
-        return (0);
-
-    if (button == 4) // Scroll hacia arriba (Zoom in)
-        zoom_in(data, x, y);
-    else if (button == 5) // Scroll hacia abajo (Zoom out)
-        zoom_out(data, x, y);
-
-    // Redibujar el fractal después del zoom
-    data->draw_fractal(data);
-    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-
-    return (0);
+	(void)x;
+	(void)y;
+	data = (t_data *)param;
+	if (x < 0 || x >= data->win_width || y < 0 || y >= data->win_height)
+		return (0);
+	if (button == 4)
+		zoom_in(data, x, y);
+	if (button == 5)
+		zoom_out(data, x, y);
+	return (0);
 }
 
 

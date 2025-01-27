@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:00:01 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/20 18:37:14 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:14:16 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int math_mandelbrot(double c_re, double c_img, int max_iter, t_data *data
         //printf(" holaaaaaaaaaaaa Iter: %d, z_re: %f, z_img: %f\n", iter, data->z_re, data->z_img);
         iter++;
     }
+    if (iter < 0)
+		iter = 0;
     //printf("z_re * z_re + z_img * z_img: %f\n", data->z_re * data->z_re + data->z_img * data->z_img);
     return(iter);
 }
@@ -42,7 +44,6 @@ void draw_mandelbrot(t_data *data)
    int y;
    double c_re;
    double c_img;
-   int color;
     
     y = 0;
     while (y < data->win_height)
@@ -55,9 +56,8 @@ void draw_mandelbrot(t_data *data)
             //printf("c_re: %f, c_img: %f\n", c_re, c_img);
 
             data->iter = math_mandelbrot(c_re, c_img, data->max_iter, data);
-            color = color_select(data);
-            *(unsigned int *)(data->addr + (y * data->line_len + x * (data->bpp / 8))) = color;
-            //printf("Dibujando Mandelbrot... Iteración: %d\n", data->iter);
+            data->color = color_select(data);
+            data->pixels[y * data->win_width + x] = data->color;
             x++;
         }
         y++;

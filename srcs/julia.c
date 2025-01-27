@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:00:18 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/21 13:21:29 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:30:57 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void draw_julia(t_data *data)
     int y;
     double c_re;
     double c_img;
-    int color;
     c_re = data->c_re;
     c_img = data->c_img;
     
@@ -48,14 +47,9 @@ void draw_julia(t_data *data)
         {
             data->z_re = data->x_min + (x / (double) data->win_width) * (data->x_max - data->x_min);
             data->z_img = data->y_min + (y / (double) data->win_height) * (data->y_max - data->y_min);
-            //printf("z_re: %f, z_img: %f, c_re: %f, c_img: %f\n", data->z_re, data->z_img, c_re, c_img);
-            //printf("c_re: %f, c_img: %f\n", c_re, c_img);
-
             data->iter = math_julia(c_re, c_img, data->max_iter, data);
-            color = color_select(data);
-            *(unsigned int *)(data->addr + (y * data->line_len + x * (data->bpp / 8))) = color;
-            //printf("Dibujando Julia... Iteración: %d\n", data->iter);
-            //printf("x: %d, y: %d, color: %x\n", x, y, color);
+            data->color = color_select(data);
+            data->pixels[y * data->win_width + x] = data->color;            //printf("Dibujando Julia... Iteración: %d\n", data->iter);
             x++;
         }
         y++;

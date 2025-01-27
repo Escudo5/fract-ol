@@ -4,7 +4,7 @@ MLX = minilibx-linux
 LIBFT_DIR = ./custom-libft
 LIBFT = $(LIBFT_DIR)/libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror  -fPIC -Iincludes -I$(MLX) -I$(LIBFT_DIR)
+CFLAGS = -Wall -Wextra -Werror  -fPIC -Iincludes -I$(MLX) -I$(LIBFT_DIR) -g
 LFLAGS = -L$(MLX) -lmlx -lXext -lX11 -lm $(LIBFT) -no-pie
 
 

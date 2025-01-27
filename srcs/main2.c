@@ -6,7 +6,7 @@
 /*   By: smarquez <smarquez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:50:08 by smarquez          #+#    #+#             */
-/*   Updated: 2025/01/27 15:00:17 by smarquez         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:43:49 by smarquez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	fun_burning(char **argv)
 	t_data	data;
 
 	var_init(&data);
-	data.fractal= "Burningship";
+	data.fractal = "Burningship";
 	data.win_width = ft_atoi(argv[2]);
 	data.win_height = ft_atoi(argv[3]);
 	data.size_x = data.win_width;
@@ -29,7 +29,7 @@ static int	fun_burning(char **argv)
 	data.img = mlx_new_image(data.mlx, data.win_width, data.win_height);
 	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp,
 			&data.line_len, &data.endian);
-	mlx_hook(data.win, 17, 0, mlx_destroy_window, &data);
+	mlx_hook(data.win, 17, 0, close_win, &data);
 	mlx_mouse_hook(data.win, mouse_control, &data);
 	mlx_key_hook(data.win, keys_control, &data);
 	mlx_loop_hook(data.mlx, &refresh, &data);
@@ -56,7 +56,7 @@ static int	fun_julia(char **argv)
 	data.img = mlx_new_image(data.mlx, data.win_width, data.win_height);
 	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp,
 			&data.line_len, &data.endian);
-	mlx_hook(data.win, 17, 0, mlx_destroy_window, &data);
+	mlx_hook(data.win, 17, 0, close_win, &data);
 	mlx_mouse_hook(data.win, mouse_control, &data);
 	mlx_key_hook(data.win, keys_control, &data);
 	mlx_loop_hook(data.mlx, &refresh, &data);
@@ -80,7 +80,12 @@ static int	fun_mandel(char **argv)
 	data.img = mlx_new_image(data.mlx, data.win_width, data.win_height);
 	data.pixels = (int *)mlx_get_data_addr(data.img, &data.bpp,
 			&data.line_len, &data.endian);
-	mlx_hook(data.win, 17, 0, mlx_destroy_window, &data);
+	// if(!data.pixels)
+	// {
+	// 	printf("Error \n");
+	// 	return(1);
+	// }
+	mlx_hook(data.win, 17, 0, close_win, &data);
 	mlx_mouse_hook(data.win, mouse_control, &data);
 	mlx_key_hook(data.win, keys_control, &data);
 	mlx_loop_hook(data.mlx, &refresh, &data);
@@ -104,7 +109,7 @@ int	main(int argc, char **argv)
 	if (argc != 4 && argc != 6)
 	{
 		fun_error();
-		return (1);
+		return (0);
 	}
 	if (ft_strncmp(argv[1], "Mandelbrot", 10) == 0 && ft_str_isdigit(argv[2])
 		&& ft_str_isdigit(argv[3]))
